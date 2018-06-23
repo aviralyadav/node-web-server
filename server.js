@@ -2,6 +2,8 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+const port = process.env.PORT || 3000;
+
 const app = express();
 hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
@@ -46,6 +48,6 @@ app.get('*', (req, res) => {
     res.send('Page not found!');
 });
 
-app.listen(2000, () => {
-    console.log('Server is up at port 2000');
+app.listen(port, () => {
+    console.log(`Server is up at port ${port}`);
 });
