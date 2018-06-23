@@ -12,7 +12,7 @@ app.use((req, res, next) => {
     var now = new Date().toString();
     var log = `${now}: ${req.method} ${req.url} `;
     fs.appendFile('server.log', log + '\n', (err) =>{
-        console.log('Unable to log: ', err);
+        //console.log('Unable to log: ', err);
     });
     next();
 });
@@ -33,14 +33,20 @@ hbs.registerHelper('doUpperText', (text) => {
 
 app.get('/', (req, res) => {
     res.render('home.hbs', {
-        pageTitle: 'Home Page',
+        pageTitle: 'Home',
         welcomeMessage: 'Welcome to my website!'
+    });
+});
+
+app.get('/projects', (req, res) => {
+    res.render('projects.hbs', {
+        pageTitle: 'Projects'
     });
 });
 
 app.get('/about', (req, res) => {
     res.render('about.hbs', {
-        pageTitle: 'About Page'
+        pageTitle: 'About'
     });
 });
 
